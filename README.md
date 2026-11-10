@@ -8,6 +8,8 @@
 
 Junte, divida, comprima, converta, assine e proteja documentos, com arquivos de até **950 MB**.
 
+### 🌐 [pdfparajpg.netlify.app](https://pdfparajpg.netlify.app)
+
 [![Next.js](https://img.shields.io/badge/Next.js-16-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)](https://nextjs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
@@ -172,9 +174,12 @@ O projeto já inclui o [`netlify.toml`](netlify.toml).
 
 1. Em [app.netlify.com](https://app.netlify.com), clique em **Add new site → Import an existing project** e
    escolha este repositório;
-2. Em **Environment variables**, defina `NEXT_PUBLIC_SITE_URL` com o endereço do site
-   (ex.: `https://fin-painel.netlify.app`);
+2. Em **Site configuration → Site name**, use o nome desejado (a versão oficial usa `pdfparajpg`, que gera
+   `https://pdfparajpg.netlify.app`);
 3. Clique em **Deploy**.
+
+O endereço público é definido em `NEXT_PUBLIC_SITE_URL` no [`netlify.toml`](netlify.toml). Se publicar com outro
+nome ou domínio, altere esse valor.
 
 As 13 ferramentas do navegador funcionam integralmente, inclusive com arquivos de 950 MB. A Netlify não oferece
 Ghostscript nem LibreOffice, então **Comprimir, Proteger, Desbloquear e Office→PDF aparecem como indisponíveis**.
