@@ -1,0 +1,10 @@
+node_modules
+.next
+.git
+public/pdfjs
+test-results
+playwright-report
+tests/fixtures/generated
+*.log
+.env*
+!.env.example
