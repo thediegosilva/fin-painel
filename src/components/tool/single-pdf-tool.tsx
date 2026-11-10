@@ -73,7 +73,7 @@ export function SinglePdfTool({
           tool={tool}
           files={runner.result.files}
           title={resultTitle}
-          zipName={zipName?.(input)}
+          zipName={zipName ? () => zipName(input) : undefined}
           summary={summary?.(runner.result.meta, input)}
           onRestart={restart}
           onBack={runner.clearResult}

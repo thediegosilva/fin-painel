@@ -21,7 +21,8 @@ export function ResultView({
 }: {
   tool: ToolDefinition;
   files: OutputFile[];
-  zipName?: string;
+  /** Nome do ZIP; uma função é avaliada no momento do download. */
+  zipName?: string | (() => string);
   title?: string;
   summary?: ReactNode;
   onRestart: () => void;
@@ -39,7 +40,8 @@ export function ResultView({
     setZipping(true);
     setZipError(null);
     try {
-      downloadBlob(await zipFiles(files), zipName ?? "arquivos.zip");
+      const name = typeof zipName === "function" ? zipName() : zipName;
+      downloadBlob(await zipFiles(files), name ?? "arquivos.zip");
     } catch {
       setZipError("Não foi possível gerar o ZIP. Baixe os arquivos individualmente.");
     } finally {

@@ -9,13 +9,14 @@ import { Segmented, Slider } from "@/components/ui/form";
 import { usePdfjsDoc } from "@/hooks/use-pdfjs-doc";
 import type { PdfInput } from "@/hooks/use-pdf-input";
 import { canvasToBlob, closePdf, openPdf, renderPage } from "@/lib/client/pdfjs";
-import { baseName, plural, sequenceName } from "@/lib/format";
+import { dateStamp, plural, sequenceName } from "@/lib/format";
 
 export default function PdfToImagesTool({ tool }: ToolProps) {
   return (
     <SinglePdfTool
       tool={tool}
-      zipName={(i) => `${baseName(i.file.name)}_imagens.zip`}
+      // ZIP nomeado com a data do download, ex.: "01 05 26.zip".
+      zipName={() => `${dateStamp()}.zip`}
       summary={(meta) => `${plural(Number(meta?.count), "imagem gerada", "imagens geradas")} em ${meta?.format}, ${meta?.dpi} DPI.`}
     >
       {(input, runner) => <Editor input={input} runner={runner} actionLabel={tool.actionLabel} />}

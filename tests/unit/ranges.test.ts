@@ -41,3 +41,13 @@ describe("sequenceName", () => {
     expect([...names].sort()).toEqual(names);
   });
 });
+
+import { dateStamp } from "@/lib/format";
+
+describe("dateStamp", () => {
+  it("formata como DD MM AA, com espaços e zeros à esquerda", () => {
+    expect(dateStamp(new Date(2026, 4, 1))).toBe("01 05 26");
+    expect(dateStamp(new Date(2026, 11, 31))).toBe("31 12 26");
+    expect(dateStamp(new Date(2030, 0, 9))).toBe("09 01 30");
+  });
+});

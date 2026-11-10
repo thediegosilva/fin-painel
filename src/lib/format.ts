@@ -36,3 +36,11 @@ export function sequenceName(index: number, total: number, ext: string): string 
   const digits = Math.max(4, String(Math.max(0, total - 1)).length);
   return `${String(index).padStart(digits, "0")}.${ext}`;
 }
+
+/** Data no formato "DD MM AA" (ex.: 01 05 26), no fuso horário de quem está usando. */
+export function dateStamp(date: Date = new Date()): string {
+  const dd = String(date.getDate()).padStart(2, "0");
+  const mm = String(date.getMonth() + 1).padStart(2, "0");
+  const yy = String(date.getFullYear() % 100).padStart(2, "0");
+  return `${dd} ${mm} ${yy}`;
+}

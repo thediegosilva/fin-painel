@@ -164,10 +164,13 @@ test.describe("ferramentas no navegador", () => {
   });
 
   test("PDF para imagem: gera um JPG por página", async ({ page }) => {
+    // Data fixa para conferir o nome do ZIP ("DD MM AA").
+    await page.clock.setFixedTime(new Date(2026, 4, 1, 10, 0, 0));
     await page.goto("/pdf-para-jpg");
     await upload(page, "tres-paginas.pdf");
     await page.getByText("72 DPI").click();
-    const { bytes } = await runAndDownload(page, "Converter em imagens", /Baixar tudo/);
+    const { bytes, download } = await runAndDownload(page, "Converter em imagens", /Baixar tudo/);
+    expect(download.suggestedFilename()).toBe("01 05 26.zip");
     const files = unzip(bytes);
     const names = Object.keys(files).sort();
     expect(names).toEqual(["0000.jpg", "0001.jpg", "0002.jpg"]);

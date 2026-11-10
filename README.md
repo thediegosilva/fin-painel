@@ -15,7 +15,7 @@ Junte, divida, comprima, converta, assine e proteja documentos, com arquivos de 
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Licença MIT](https://img.shields.io/badge/Licen%C3%A7a-MIT-2EA043?style=for-the-badge)](LICENSE)
 
-[![Testes](https://img.shields.io/badge/testes-41_unit%C3%A1rios_%2B_53_E2E-0c7a64?style=flat-square)](#-testes)
+[![Testes](https://img.shields.io/badge/testes-42_unit%C3%A1rios_%2B_53_E2E-0c7a64?style=flat-square)](#-testes)
 [![Ferramentas](https://img.shields.io/badge/ferramentas-17-0c7a64?style=flat-square)](#-ferramentas)
 [![Processamento local](https://img.shields.io/badge/13_ferramentas-sem_upload-0c7a64?style=flat-square)](#-privacidade-por-padr%C3%A3o)
 
@@ -52,7 +52,7 @@ O código é aberto para que qualquer igreja, ONG, escola ou pessoa possa usar, 
 
 | | Ferramenta | O que faz | Onde processa |
 |:-:|---|---|:-:|
-| 🖼️ | **PDF para JPG** | Cada página vira JPG ou PNG (72–300 DPI), numeradas `0000`, `0001`… e baixadas em `.zip` ou separadas | 💻 Navegador |
+| 🖼️ | **PDF para JPG** | Cada página vira JPG ou PNG (72–300 DPI), numeradas `0000`, `0001`… e baixadas separadas ou em um `.zip` com a data do dia (ex.: `01 05 26.zip`) | 💻 Navegador |
 | 📷 | **JPG para PDF** | JPG, PNG, WEBP, GIF e BMP em um PDF; corrige a rotação de fotos de celular | 💻 Navegador |
 | 🔗 | **Juntar PDF** | Combina vários PDFs na ordem que você arrastar | 💻 Navegador |
 | ✂️ | **Dividir PDF** | Por intervalos, a cada N páginas ou uma página por arquivo | 💻 Navegador |
@@ -152,7 +152,7 @@ Sem eles, o site funciona normalmente — só as ferramentas que dependem deles 
 ```bash
 npm run lint           # ESLint
 npm run typecheck      # TypeScript
-npm test               # 41 testes unitários e de integração (Vitest)
+npm test               # 42 testes unitários e de integração (Vitest)
 npm run build          # build de produção
 npx playwright install chromium   # apenas na primeira vez
 npm run test:e2e       # 53 testes de ponta a ponta (Playwright), no desktop e no celular
