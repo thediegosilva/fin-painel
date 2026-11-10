@@ -11,10 +11,10 @@ function subscribe(cb: () => void) {
   return () => obs.disconnect();
 }
 
-const getTheme = (): Theme => (document.documentElement.dataset.theme === "dark" ? "dark" : "light");
+const getTheme = (): Theme => (document.documentElement.dataset.theme === "light" ? "light" : "dark");
 
 export function ThemeToggle() {
-  const theme = useSyncExternalStore(subscribe, getTheme, () => "light" as Theme);
+  const theme = useSyncExternalStore(subscribe, getTheme, () => DEFAULT_THEME);
   const next: Theme = theme === "dark" ? "light" : "dark";
   return (
     <button
@@ -37,4 +37,7 @@ export function ThemeToggle() {
 }
 
 /** Script inline executado antes da pintura para evitar "flash" de tema. */
-export const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('fp-theme');if(t!=='light'&&t!=='dark'){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light'}document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='light'}})();`;
+/** Tema padrão do site: escuro. O claro só é usado se a pessoa escolher pelo botão. */
+export const DEFAULT_THEME: Theme = "dark";
+
+export const THEME_SCRIPT = `(function(){try{var t=localStorage.getItem('fp-theme');if(t!=='light'&&t!=='dark'){t='dark'}document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme='dark'}})();`;

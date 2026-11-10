@@ -15,13 +15,13 @@ Junte, divida, comprima, converta, assine e proteja documentos, com arquivos de 
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Licença MIT](https://img.shields.io/badge/Licen%C3%A7a-MIT-2EA043?style=for-the-badge)](LICENSE)
 
-[![Testes](https://img.shields.io/badge/testes-41_unit%C3%A1rios_%2B_52_E2E-0c7a64?style=flat-square)](#-testes)
+[![Testes](https://img.shields.io/badge/testes-41_unit%C3%A1rios_%2B_53_E2E-0c7a64?style=flat-square)](#-testes)
 [![Ferramentas](https://img.shields.io/badge/ferramentas-17-0c7a64?style=flat-square)](#-ferramentas)
 [![Processamento local](https://img.shields.io/badge/13_ferramentas-sem_upload-0c7a64?style=flat-square)](#-privacidade-por-padr%C3%A3o)
 
 <br/>
 
-<img src="docs/screenshots/home.png" alt="Página inicial do FIN-Painel" width="100%" />
+<img src="docs/screenshots/home-escuro.png" alt="Página inicial do FIN-Painel (tema escuro, padrão)" width="100%" />
 
 </div>
 
@@ -80,11 +80,11 @@ O código é aberto para que qualquer igreja, ONG, escola ou pessoa possa usar, 
 <table>
   <tr>
     <td width="50%"><img src="docs/screenshots/ferramentas.png" alt="Lista de ferramentas com busca e filtro por categoria" /></td>
-    <td width="50%"><img src="docs/screenshots/home-escuro.png" alt="Página inicial no tema escuro" /></td>
+    <td width="50%"><img src="docs/screenshots/home.png" alt="Página inicial no tema claro" /></td>
   </tr>
   <tr>
     <td align="center"><sub>Todas as ferramentas, com busca e filtro por categoria</sub></td>
-    <td align="center"><sub>Tema escuro</sub></td>
+    <td align="center"><sub>Tema claro, disponível pelo botão no cabeçalho</sub></td>
   </tr>
   <tr>
     <td><img src="docs/screenshots/remover-paginas.png" alt="Seleção de páginas por miniaturas" /></td>
@@ -155,7 +155,7 @@ npm run typecheck      # TypeScript
 npm test               # 41 testes unitários e de integração (Vitest)
 npm run build          # build de produção
 npx playwright install chromium   # apenas na primeira vez
-npm run test:e2e       # 52 testes de ponta a ponta (Playwright), no desktop e no celular
+npm run test:e2e       # 53 testes de ponta a ponta (Playwright), no desktop e no celular
 npm run check          # lint + typecheck + testes + build, de uma vez
 ```
 
@@ -270,6 +270,8 @@ tests/
   fila de concorrência, limite de requisições e limite de tamanho aplicado durante a leitura do envio.
 - **Cabeçalhos de segurança:** CSP restritiva, `X-Frame-Options: DENY`, `nosniff`, `Referrer-Policy` e
   `Permissions-Policy`.
+- **Tema escuro por padrão:** o site abre escuro (já no HTML vindo do servidor, sem "piscar" claro); o tema
+  claro fica disponível no botão do cabeçalho e a escolha é lembrada.
 - **Acessibilidade:** navegação completa por teclado (inclusive para reordenar páginas), rótulos para leitores de
   tela e respeito à preferência por movimento reduzido.
 

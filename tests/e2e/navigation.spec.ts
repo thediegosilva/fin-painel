@@ -178,16 +178,24 @@ test.describe("navegação e páginas", () => {
     }
   });
 
-  test("tema escuro alterna e persiste após recarregar", async ({ page }) => {
+  test("abre no tema escuro por padrão, mesmo com o sistema no modo claro", async ({ page, request }) => {
     await page.emulateMedia({ colorScheme: "light" });
     await page.goto("/");
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
+    const bg = await page.evaluate(() => getComputedStyle(document.body).backgroundColor);
+    expect(bg).toBe("rgb(10, 15, 23)");
+    // O HTML já chega escuro do servidor (sem depender de JavaScript).
+    expect(await (await request.get("/")).text()).toMatch(/<html[^>]*data-theme="dark"/);
+  });
+
+  test("tema claro pode ser escolhido e persiste após recarregar", async ({ page }) => {
+    await page.goto("/");
+    await page.getByRole("button", { name: "Ativar tema claro" }).click();
+    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
+    await page.reload();
     await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
     await page.getByRole("button", { name: "Ativar tema escuro" }).click();
     await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-    await page.reload();
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "dark");
-    await page.getByRole("button", { name: "Ativar tema claro" }).click();
-    await expect(page.locator("html")).toHaveAttribute("data-theme", "light");
   });
 
   test("layout sem rolagem horizontal em todas as páginas @mobile", async ({ page }) => {
